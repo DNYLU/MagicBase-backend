@@ -1,7 +1,8 @@
 package com.example.magicbasebackend.controller;
 
+import com.example.magicbasebackend.models.User;
 import com.example.magicbasebackend.services.UserService;
-import org.apache.catalina.User;
+
 import org.springframework.web.bind.annotation.*;
 
 @RestController
