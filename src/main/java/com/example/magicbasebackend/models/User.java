@@ -19,8 +19,8 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "user_name")
-    private String name;
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "user_password")
     private String password;
@@ -29,8 +29,8 @@ public class User {
     private String username;
 
 
-    public User(String name, String password, String username) {
-        this.name = name;
+    public User(String email, String password, String username) {
+        this.email = email;
         this.password = password;
         this.username = username;
     }
