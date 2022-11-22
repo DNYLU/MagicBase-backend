@@ -15,7 +15,9 @@ public class UserController {
     }
 
     @PostMapping("add/user")
-    public void addUser(@RequestParam("name") String name, @RequestParam("password") String password, @RequestParam("username") String username) {
+    public void addUser(@RequestParam("name") String name,
+                        @RequestParam("password") String password,
+                        @RequestParam("username") String username) {
         User user = new User(name, password, username);
         userService.saveUser(user);
     }
@@ -24,5 +26,6 @@ public class UserController {
     public User findUserByUsername(@PathVariable("username") String username) {
         User user = userService.getUserByUsername(username);
         return user;
+
     }
 }
