@@ -1,6 +1,8 @@
 package com.example.magicbasebackend;
 
+import com.example.magicbasebackend.model.Collection;
 import com.example.magicbasebackend.model.User;
+import com.example.magicbasebackend.repositories.CollectionRepository;
 import com.example.magicbasebackend.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,8 +21,8 @@ public class MagicBaseBackendApplication {
 
     @Bean
     public CommandLineRunner importData(
-            UserRepository userRepository
-
+            UserRepository userRepository,
+            CollectionRepository collectionRepository
     )
     {
         return (args) -> {
@@ -28,12 +30,12 @@ public class MagicBaseBackendApplication {
             User bobsen = new User("bobsen@gmail", "123123", "bobsen");
             userRepository.save(bobsen);
 
+            Collection collection = new Collection();
+            collection.setUsers(List.of(bobsen));
+            collectionRepository.save(collection);
 
-
-
-
-
-
+            bobsen.setCollections(List.of(collection));
+            userRepository.save(bobsen);
 
 
 
