@@ -4,6 +4,8 @@ import com.example.magicbasebackend.model.Collection;
 import com.example.magicbasebackend.repositories.CollectionRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CollectionService {
     private CollectionRepository collectionRepository;
@@ -20,5 +22,9 @@ public class CollectionService {
 
     public Collection getCollectionById(Long id) {
         return collectionRepository.findById(id).get();
+    }
+
+    public List<Collection> showAllCollection(Long id) {
+        return collectionRepository.findByUsersId(id);
     }
 }

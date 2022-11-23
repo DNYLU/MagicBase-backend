@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CollectionRepository extends JpaRepository<Collection, Long> {
 
-    public List<Collection> findAllByCollectionId(Long id); // Show deck/cards?
+    List<Collection> findByUsersId(Long userId);
 }

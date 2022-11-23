@@ -25,7 +25,6 @@ public class CollectionLineCard {
     @JsonBackReference
     private Collection collection;
 
-
     @ManyToOne
     private Card card;
 
