@@ -16,13 +16,14 @@ public class CollectionController {
         this.collectionService = collectionService;
     }
 
+    /*
     @PostMapping("/add/{collectionId}/cards/{cardId}/user/{userName}")
     public ResponseEntity<Collection> addCard(@RequestBody Collection collection,
                                               @PathVariable("collectionId") Long collectionId,
                                               @PathVariable("cardId") Long cardId,
                                               @PathVariable("userName") String userName) {
         return new ResponseEntity<>(collectionService.addCard(collection, collectionId, cardId, userName), HttpStatus.OK);
-    }
+    } */
 
     @GetMapping("/{id}")
     public ResponseEntity<Collection> getCollectionById(@PathVariable("id") Long id) {
