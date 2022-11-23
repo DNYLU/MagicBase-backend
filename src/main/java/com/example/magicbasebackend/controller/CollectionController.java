@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/collection")
+@RequestMapping("/api/collection")
 public class CollectionController {
     private CollectionService collectionService;
 
@@ -16,14 +16,10 @@ public class CollectionController {
         this.collectionService = collectionService;
     }
 
-    /*
-    @PostMapping("/add/{collectionId}/cards/{cardId}/user/{userName}")
-    public ResponseEntity<Collection> addCard(@RequestBody Collection collection,
-                                              @PathVariable("collectionId") Long collectionId,
-                                              @PathVariable("cardId") Long cardId,
-                                              @PathVariable("userName") String userName) {
-        return new ResponseEntity<>(collectionService.addCard(collection, collectionId, cardId, userName), HttpStatus.OK);
-    } */
+    @PostMapping()
+    public ResponseEntity<Collection> addCollection(@RequestBody Collection collection) {
+        return new ResponseEntity<>(collectionService.addCollection(collection), HttpStatus.OK);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Collection> getCollectionById(@PathVariable("id") Long id) {

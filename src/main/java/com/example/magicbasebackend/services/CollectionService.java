@@ -14,5 +14,11 @@ public class CollectionService {
         this.userService = userService;
     }
 
-    public Collection addCollection
+    public Collection addCollection(Collection collection) {
+        return collectionRepository.save(collection);
+    }
+
+    public Collection getCollectionById(Long id) {
+        return collectionRepository.findById(id).get();
+    }
 }
