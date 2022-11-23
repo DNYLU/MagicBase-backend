@@ -1,5 +1,7 @@
 package com.example.magicbasebackend;
 
+import com.example.magicbasebackend.model.User;
+import com.example.magicbasebackend.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,10 +19,14 @@ public class MagicBaseBackendApplication {
 
     @Bean
     public CommandLineRunner importData(
+            UserRepository userRepository
 
     )
     {
         return (args) -> {
+
+            User bobsen = new User("bobsen@gmail", "123123", "bobsen");
+            userRepository.save(bobsen);
 
 
 
