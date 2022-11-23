@@ -1,6 +1,6 @@
 package com.example.magicbasebackend.controller;
 
-import com.example.magicbasebackend.models.User;
+import com.example.magicbasebackend.model.User;
 import com.example.magicbasebackend.services.UserService;
 
 import org.springframework.http.ResponseEntity;
