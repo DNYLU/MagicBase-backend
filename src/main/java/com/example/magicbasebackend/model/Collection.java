@@ -1,4 +1,4 @@
-package com.example.magicbasebackend.models;
+package com.example.magicbasebackend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Collections;
 
 @Setter
 @Getter

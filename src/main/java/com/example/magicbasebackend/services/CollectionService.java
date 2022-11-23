@@ -1,6 +1,6 @@
 package com.example.magicbasebackend.services;
 
-import com.example.magicbasebackend.models.Collection;
+import com.example.magicbasebackend.model.Collection;
 import com.example.magicbasebackend.repositories.CollectionRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.example.magicbasebackend.repositories;
 
-import com.example.magicbasebackend.models.Collection;
+import com.example.magicbasebackend.model.Collection;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

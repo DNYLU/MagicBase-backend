@@ -1,6 +1,6 @@
 package com.example.magicbasebackend.controller;
 
-import com.example.magicbasebackend.models.Collection;
+import com.example.magicbasebackend.model.Collection;
 import com.example.magicbasebackend.services.CollectionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

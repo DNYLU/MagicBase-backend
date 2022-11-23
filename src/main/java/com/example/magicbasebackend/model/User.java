@@ -1,4 +1,4 @@
-package com.example.magicbasebackend.models;
+package com.example.magicbasebackend.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
