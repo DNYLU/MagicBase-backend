@@ -1,5 +1,6 @@
 package com.example.magicbasebackend.controller;
 
+import com.example.magicbasebackend.exception.ResourceNotFoundException;
 import com.example.magicbasebackend.model.User;
 import com.example.magicbasebackend.services.UserService;
 
@@ -24,9 +25,11 @@ public class UserController {
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity <User> findUserByUsername(@PathVariable("username") String username) throws Exception {
-        Optional<User> user = Optional.of(userService.getUserByUsername(username)
-                .orElseThrow(() -> new Exception()));
-        return ResponseEntity.ok().body(user.get());
+    public ResponseEntity <User> findUserByUsername(@PathVariable("username") String username) {
+        Optional<User> foundUser = userService.getUserByUsername(username);
+        if (foundUser.isEmpty()) {
+            throw new ResourceNotFoundException("User with username: " + username + " was not found");
+        }
+        return ResponseEntity.ok().body(foundUser.get());
     }
 }
