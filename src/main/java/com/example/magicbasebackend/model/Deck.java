@@ -1,5 +1,6 @@
-package com.example.magicbasebackend.models;
+package com.example.magicbasebackend.model;
 
+import com.example.magicbasebackend.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
