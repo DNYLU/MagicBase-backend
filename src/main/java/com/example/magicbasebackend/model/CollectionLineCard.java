@@ -1,5 +1,6 @@
 package com.example.magicbasebackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,14 +21,13 @@ public class CollectionLineCard {
     @Column(name = "collection_line_card_quantity")
     private int quantity;
 
-    /*@Column(name = "collection_line_card_collection_id")
+    @ManyToOne
+    @JsonBackReference
     private Collection collection;
 
-     */
 
     @ManyToOne
     private Card card;
-
 
 
 }

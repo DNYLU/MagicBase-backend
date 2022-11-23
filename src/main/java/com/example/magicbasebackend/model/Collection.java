@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Setter
 @Getter
@@ -16,23 +17,21 @@ public class Collection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "collection_id")
-    private Long collectionId;
+    private Long id;
 
-    /*@OneToMany()
-    @JoinTable(name = "collection_line_card")
-    private Collections collections;*/
+    @OneToMany(mappedBy = "collection")
+    private List<CollectionLineCard> collectionLineCards;
 
     @Column(name = "collection_type")
-    private String collectionType;
+    private String type;
 
     @Column(name = "collection_name")
-    private String collectionName;
+    private String name;
 
     @Column(name = "collection_description")
-    private String collectionDescription;
+    private String description;
 
     @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "user_user_id")
-    private User user;
+    @ManyToMany(mappedBy = "collections")
+    private List<User> users;
 }
