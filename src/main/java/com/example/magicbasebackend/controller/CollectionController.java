@@ -28,7 +28,7 @@ public class CollectionController {
         return new ResponseEntity<>(collectionService.getCollectionById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     public ResponseEntity<List<Collection>> showAllCollection(@PathVariable("userId")Long id) {
         return new ResponseEntity<>(collectionService.showAllCollection(id), HttpStatus.OK);
     }
