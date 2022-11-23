@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -59,7 +60,7 @@ public class Card {
 
 
     @OneToMany(mappedBy = "card")
-    private List<CollectionLineCard> collectionLineCards = new java.util.ArrayList<>();
+    private List<CollectionLineCard> collectionLineCards = new ArrayList<>();
 
 
 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/card")
+@RequestMapping("/api/card")
 @CrossOrigin
 public class CardController {
     private CardService cardService;
