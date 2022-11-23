@@ -5,6 +5,8 @@ import com.example.magicbasebackend.repositories.UserRepository;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     UserRepository userRepository;
@@ -18,7 +20,7 @@ public class UserService {
 
     }
 
-    public User getUserByUsername(String username) {
+    public Optional<User> getUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 }
