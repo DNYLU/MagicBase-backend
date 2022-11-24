@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/deck")
+@RequestMapping("/api/deck")
 @CrossOrigin
 public class DeckController {
     private DeckService deckService;
