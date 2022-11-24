@@ -29,6 +29,9 @@ public class User {
     @Column(name = "user_username")
     private String username;
 
+    @OneToMany(mappedBy = "owner")
+    private List<Deck> decksOwned;
+
     @ManyToMany
     @JoinTable(
             name = "user_has_collection",
@@ -36,6 +39,15 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "collection_id")
     )
     private List<Collection> collections;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_has_deck",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "deck_id")
+    )
+    private List<Deck> decks;
 
 
     public User(String email, String password, String username) {

@@ -1,6 +1,7 @@
 package com.example.magicbasebackend.model;
 
 import com.example.magicbasebackend.model.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +19,10 @@ public class Deck {
     private Long id;
 
     @ManyToMany()
-    @JoinTable(name = "users_has_deck", joinColumns = @JoinColumn(name = "deck_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JsonBackReference
+    @JoinTable(name = "users_has_deck",
+            joinColumns = @JoinColumn(name = "deck_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users;
 
 
@@ -36,7 +40,8 @@ public class Deck {
     private boolean isPublic;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "owner_id")
-    private User user;
+    private User owner;
 
 }

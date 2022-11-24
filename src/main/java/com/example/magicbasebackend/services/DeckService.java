@@ -4,6 +4,8 @@ import com.example.magicbasebackend.model.Deck;
 import com.example.magicbasebackend.repositories.DeckRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DeckService {
     private DeckRepository deckRepository;
@@ -18,6 +20,10 @@ public class DeckService {
 
     public Iterable<Deck> findAllDecks() {
         return deckRepository.findAll();
+    }
+
+    public List<Deck> findAllDecksByUserId( Long id){
+      return   deckRepository.findByUsersId(id);
     }
 
     public Deck add(Deck deck) {
