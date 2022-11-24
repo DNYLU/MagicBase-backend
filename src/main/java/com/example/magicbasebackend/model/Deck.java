@@ -19,7 +19,7 @@ public class Deck {
     private Long id;
 
     @ManyToMany()
-    @JsonBackReference
+    @JsonBackReference(value = "users")
     @JoinTable(name = "users_has_deck",
             joinColumns = @JoinColumn(name = "deck_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
@@ -40,7 +40,7 @@ public class Deck {
     private boolean isPublic;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "owner")
     @JoinColumn(name = "owner_id")
     private User owner;
 
