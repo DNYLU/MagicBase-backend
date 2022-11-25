@@ -3,6 +3,7 @@ package com.example.magicbasebackend.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
+@ToString
 public class Card {
 
     @Id
@@ -26,7 +28,8 @@ public class Card {
     @Column(name = "card_name")
     private String name;
 
-    @Column(name = "card_oracle_text")
+
+    @Column(name = "card_oracle_text", length = 700)
     private String oracleText;
 
     @Column(name = "card_rarity")

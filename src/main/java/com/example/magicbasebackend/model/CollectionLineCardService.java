@@ -26,16 +26,34 @@ public class CollectionLineCardService {
     public void addCards(AddCardRequestDto addCardRequest) {
         Card card = cardRepository.findByApiId(addCardRequest.getApiId());
         Collection collection = collectionRepository.findById(addCardRequest.getCollectionId()).get();
+        CollectionLineCard collectionLineCard = new CollectionLineCard();
         if (card == null) {
-            Card newCard = new Card();
-            CollectionLineCard collectionLineCard = new CollectionLineCard();
-            collectionLineCard.setQuantity(addCardRequest.getQuantity());
-            newCard.setConvertedManaCost(addCardRequest.getConvertedManaCost());
-            newCard.setApiId(addCardRequest.getApiId());
-            collection.setCollectionLineCards(List.of(collectionLineCard));
-            collectionLineCard.setCard(newCard);
-            cardRepository.save(newCard);
-            collectionRepository.save(collection);
+            card = new Card();
+
+
+            card.setConvertedManaCost(addCardRequest.getConvertedManaCost());
+            card.setApiId(addCardRequest.getApiId());
+            card.setEuroPrice(addCardRequest.getEuroPrice());
+            card.setImageUrl(addCardRequest.getImageUrl());
+            card.setName(addCardRequest.getName());
+            card.setOracleText(addCardRequest.getOracleText());
+            card.setPower(addCardRequest.getPower());
+            card.setRarity(addCardRequest.getRarity());
+            card.setSetName(addCardRequest.getSetName());
+            card.setToughness(addCardRequest.getToughness());
+            card.setTypeLine(addCardRequest.getTypeLine());
+            System.out.println(addCardRequest);
+
+
+
         }
+
+        collectionLineCard.setCollection(collection);
+        collectionLineCard.setQuantity(addCardRequest.getQuantity());
+        collectionLineCard.setCard(card);
+        cardRepository.save(card);
+
+        collectionRepository.save(collection);
+        collectionLineCardRepository.save(collectionLineCard);
     }
 }

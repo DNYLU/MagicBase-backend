@@ -20,7 +20,6 @@ public class CollectionLineCardController {
 
     @PostMapping()
     public ResponseEntity<AddCardRequestDto> add(@RequestBody AddCardRequestDto addCardRequest) {
-
         collectionLineCardService.addCards(addCardRequest);
 
         // skal lige ændres til at returnere det rigtige

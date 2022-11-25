@@ -2,7 +2,8 @@ package com.example.magicbasebackend.repositories;
 
 
 import com.example.magicbasebackend.controller.CollectionLineCardController;
+import com.example.magicbasebackend.model.CollectionLineCard;
 import org.springframework.data.repository.CrudRepository;
 
-public interface CollectionLineCardRepository extends CrudRepository<CollectionLineCardController, Long> {
+public interface CollectionLineCardRepository extends CrudRepository<CollectionLineCard, Long> {
 }
