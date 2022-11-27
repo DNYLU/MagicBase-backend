@@ -1,6 +1,9 @@
-package com.example.magicbasebackend.model;
+package com.example.magicbasebackend.services;
 
 import com.example.magicbasebackend.dto.AddCardRequestDto;
+import com.example.magicbasebackend.model.Card;
+import com.example.magicbasebackend.model.Collection;
+import com.example.magicbasebackend.model.CollectionLineCard;
 import com.example.magicbasebackend.repositories.CardRepository;
 import com.example.magicbasebackend.repositories.CollectionLineCardRepository;
 import com.example.magicbasebackend.repositories.CollectionRepository;

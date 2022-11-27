@@ -1,5 +1,6 @@
 package com.example.magicbasebackend.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,6 +9,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class AddCardRequestDto {
 
 
@@ -36,4 +38,6 @@ public class AddCardRequestDto {
     private int quantity;
 
     private Long collectionId;
+
+
 }
