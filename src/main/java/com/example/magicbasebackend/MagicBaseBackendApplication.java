@@ -1,11 +1,15 @@
 package com.example.magicbasebackend;
 
+import com.example.magicbasebackend.dto.AddCardRequestDto;
+import com.example.magicbasebackend.model.Card;
 import com.example.magicbasebackend.model.Collection;
 import com.example.magicbasebackend.model.Deck;
 import com.example.magicbasebackend.model.User;
 import com.example.magicbasebackend.repositories.CollectionRepository;
 import com.example.magicbasebackend.repositories.DeckRepository;
 import com.example.magicbasebackend.repositories.UserRepository;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,6 +23,19 @@ public class MagicBaseBackendApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MagicBaseBackendApplication.class, args);
+    }
+    @Bean
+    public ModelMapper modelMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        PropertyMap propertyMap = new PropertyMap<AddCardRequestDto, Card>() {
+            @Override
+            protected void configure() {
+                skip(destination.getId());
+            }
+        };
+
+        modelMapper.addMappings(propertyMap);
+        return modelMapper;
     }
 
     @Bean

@@ -1,5 +1,6 @@
 package com.example.magicbasebackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -64,7 +65,7 @@ public class Card {
     )
     private List<Color> colors;
 
-
+    @JsonBackReference
     @OneToMany(mappedBy = "card")
     private List<CollectionLineCard> collectionLineCards = new ArrayList<>();
 
