@@ -32,7 +32,7 @@ public class User {
     @OneToMany(mappedBy = "owner")
     private List<Deck> decksOwned;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_has_collection",
             joinColumns = @JoinColumn(name = "user_id"),

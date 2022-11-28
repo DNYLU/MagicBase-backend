@@ -18,11 +18,8 @@ public class Deck {
     @Column(name = "deck_id")
     private Long id;
 
-    @ManyToMany()
+    @ManyToMany(mappedBy = "decks")
     @JsonBackReference(value = "users")
-    @JoinTable(name = "users_has_deck",
-            joinColumns = @JoinColumn(name = "deck_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users;
 
 
