@@ -7,6 +7,8 @@ import com.example.magicbasebackend.model.CollectionLineCard;
 import com.example.magicbasebackend.repositories.CardRepository;
 import com.example.magicbasebackend.repositories.CollectionLineCardRepository;
 import com.example.magicbasebackend.repositories.CollectionRepository;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +19,8 @@ public class CollectionLineCardService {
     private CollectionLineCardRepository collectionLineCardRepository;
     private CardRepository cardRepository;
     private CollectionRepository collectionRepository;
+    @Autowired
+    private ModelMapper modelMapper;
 
     public CollectionLineCardService(CollectionLineCardRepository collectionLineCardRepository,
                                      CardRepository cardRepository,
@@ -31,21 +35,8 @@ public class CollectionLineCardService {
         Collection collection = collectionRepository.findById(addCardRequest.getCollectionId()).get();
         CollectionLineCard collectionLineCard = new CollectionLineCard();
         if (card == null) {
-            card = new Card();
+            card = modelMapper.map(addCardRequest, Card.class);
 
-
-            card.setConvertedManaCost(addCardRequest.getConvertedManaCost());
-            card.setApiId(addCardRequest.getApiId());
-            card.setEuroPrice(addCardRequest.getEuroPrice());
-            card.setImageUrl(addCardRequest.getImageUrl());
-            card.setName(addCardRequest.getName());
-            card.setOracleText(addCardRequest.getOracleText());
-            card.setPower(addCardRequest.getPower());
-            card.setRarity(addCardRequest.getRarity());
-            card.setSetName(addCardRequest.getSetName());
-            card.setToughness(addCardRequest.getToughness());
-            card.setTypeLine(addCardRequest.getTypeLine());
-            System.out.println(addCardRequest);
 
 
 
