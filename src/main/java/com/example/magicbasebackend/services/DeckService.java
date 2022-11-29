@@ -29,4 +29,9 @@ public class DeckService {
     public Deck add(Deck deck) {
         return deckRepository.save(deck);
     }
+
+    public void deleteById(Long id){
+        deckRepository.deleteById(id);
+    }
+
 }

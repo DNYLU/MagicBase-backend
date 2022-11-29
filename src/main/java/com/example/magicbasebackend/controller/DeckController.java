@@ -28,4 +28,8 @@ public class DeckController {
        List<Deck> deckList = deckService.findAllDecksByUserId(id);
         return ResponseEntity.ok().body(deckList);
     }
+    @DeleteMapping("/{id}")
+    public void deleteDeckById(@PathVariable("id") Long id){
+        deckService.deleteById(id);
+    }
 }

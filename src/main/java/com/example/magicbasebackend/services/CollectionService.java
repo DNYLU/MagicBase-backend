@@ -1,6 +1,8 @@
 package com.example.magicbasebackend.services;
 
+import com.example.magicbasebackend.dto.AddCollectionRequestDto;
 import com.example.magicbasebackend.model.Collection;
+import com.example.magicbasebackend.model.User;
 import com.example.magicbasebackend.repositories.CollectionRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,15 @@ public class CollectionService {
         this.userService = userService;
     }
 
-    public Collection addCollection(Collection collection) {
+    public Collection addCollection(AddCollectionRequestDto addCollectionRequestDto) {
+        User user = userService.getUserById(addCollectionRequestDto.getUserId());
+        Collection collection = new Collection();
+        collection.setType(addCollectionRequestDto.getType());
+        collection.setName(addCollectionRequestDto.getName());
+        collection.setDescription(addCollectionRequestDto.getDescription());
+        collection.getUsers().add(user);
+        user.setCollections(List.of(collection));
+        //userService.save(user);
         return collectionRepository.save(collection);
     }
 
@@ -26,5 +36,9 @@ public class CollectionService {
 
     public List<Collection> showAllCollection(Long id) {
         return collectionRepository.findByUsersId(id);
+    }
+
+    public void deleteById(Long id){
+        collectionRepository.deleteById(id);
     }
 }

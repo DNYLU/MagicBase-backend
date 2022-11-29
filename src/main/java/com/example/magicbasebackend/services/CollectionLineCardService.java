@@ -37,9 +37,6 @@ public class CollectionLineCardService {
         if (card == null) {
             card = modelMapper.map(addCardRequest, Card.class);
 
-
-
-
         }
 
         collectionLineCard.setCollection(collection);

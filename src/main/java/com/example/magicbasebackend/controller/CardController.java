@@ -1,6 +1,7 @@
 package com.example.magicbasebackend.controller;
 
 import com.example.magicbasebackend.model.Card;
+import com.example.magicbasebackend.model.CollectionLineCard;
 import com.example.magicbasebackend.services.CardService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +19,10 @@ public class CardController {
         this.cardService = cardService;
     }
 
-    @PostMapping()
-    public void addCard(@RequestBody Card card) {
-        cardService.add(card);
+    @PostMapping("/collection/{id}")
+    public void addCard(@RequestBody CollectionLineCard collectionLineCard,
+                        @PathVariable("id") Long id) {
+        cardService.add(collectionLineCard);
     }
 
     @GetMapping("/{id}")
@@ -34,4 +36,6 @@ public class CardController {
         Iterable<Card> cards = cardService.findAllCards();
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
+
+
 }
