@@ -22,12 +22,12 @@ public class CardService {
     }
 
     public void add(CollectionLineCard collectionLineCard) {
-        Card card = cardRepository.findByCardApiId(collectionLineCard.getCard().getCardApiId());
+        /*Card card = cardRepository.findByCardApiId(collectionLineCard.getCard().getCardApiId());
         if (card == null){
             cardRepository.save(collectionLineCard.getCard());
         } else if (card != null){
 
         }
-
+*/
     }
 }
