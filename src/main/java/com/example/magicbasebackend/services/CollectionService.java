@@ -37,4 +37,8 @@ public class CollectionService {
     public List<Collection> showAllCollection(Long id) {
         return collectionRepository.findByUsersId(id);
     }
+
+    public void deleteById(Long id){
+        collectionRepository.deleteById(id);
+    }
 }
