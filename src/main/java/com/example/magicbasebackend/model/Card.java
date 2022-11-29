@@ -16,9 +16,13 @@ public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "card_id")
     private Long id;
+
+
+    @Column(name = "card_api_id", unique = true)
+    private String cardApiId;
+
 
     @Column(name = "card_name")
     private String name;
@@ -61,9 +65,6 @@ public class Card {
 
     @OneToMany(mappedBy = "card")
     private List<CollectionLineCard> collectionLineCards = new ArrayList<>();
-
-
-
 
 
 }

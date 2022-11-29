@@ -1,6 +1,7 @@
 package com.example.magicbasebackend.services;
 
 import com.example.magicbasebackend.model.Card;
+import com.example.magicbasebackend.model.CollectionLineCard;
 import com.example.magicbasebackend.repositories.CardRepository;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,13 @@ public class CardService {
         return cardRepository.findAll();
     }
 
-    public void add(Card card) {
-        cardRepository.save(card);
+    public void add(CollectionLineCard collectionLineCard) {
+        Card card = cardRepository.findByCardApiId(collectionLineCard.getCard().getCardApiId());
+        if (card == null){
+            cardRepository.save(collectionLineCard.getCard());
+        } else if (card != null){
+
+        }
+
     }
 }
