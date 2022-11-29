@@ -32,7 +32,7 @@ public class CollectionController {
     public ResponseEntity<List<Collection>> showAllCollection(@PathVariable("userId")Long id) {
         return new ResponseEntity<>(collectionService.showAllCollection(id), HttpStatus.OK);
     }
-
+//test delete
     @DeleteMapping("/{id}")
     public void deleteCollectionById(@PathVariable("id") Long id){
         collectionService.deleteById(id);
