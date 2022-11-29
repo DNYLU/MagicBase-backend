@@ -1,5 +1,6 @@
 package com.example.magicbasebackend.model;
 
+import com.example.magicbasebackend.enums.CollectionType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,7 @@ public class Collection {
     private List<CollectionLineCard> collectionLineCards;
 
     @Column(name = "collection_type")
-    private String type;
+    private CollectionType type;
 
     @Column(name = "collection_name")
     private String name;

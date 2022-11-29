@@ -1,10 +1,13 @@
 package com.example.magicbasebackend.services;
 
+import com.example.magicbasebackend.enums.CollectionType;
+import com.example.magicbasebackend.model.Collection;
 import com.example.magicbasebackend.model.User;
 import com.example.magicbasebackend.repositories.UserRepository;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,8 +19,11 @@ public class UserService {
     }
 
     public User saveUser(User user) {
+        Collection collection = new Collection();
+        collection.setType(CollectionType.ALL_CARDS);
+        collection.setName(user.getUsername() + "'s collection");
+        user.setCollections(List.of(collection));
        return userRepository.save(user);
-
     }
 
     public Optional<User> getUserByUsername(String username) {

@@ -1,17 +1,16 @@
 package com.example.magicbasebackend;
 
-import com.example.magicbasebackend.model.Collection;
-import com.example.magicbasebackend.model.Deck;
-import com.example.magicbasebackend.model.User;
-import com.example.magicbasebackend.repositories.CollectionRepository;
-import com.example.magicbasebackend.repositories.DeckRepository;
-import com.example.magicbasebackend.repositories.UserRepository;
+import com.example.magicbasebackend.dto.AddCardRequestDto;
+import com.example.magicbasebackend.enums.CollectionType;
+import com.example.magicbasebackend.model.*;
+import com.example.magicbasebackend.repositories.*;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -20,12 +19,27 @@ public class MagicBaseBackendApplication {
     public static void main(String[] args) {
         SpringApplication.run(MagicBaseBackendApplication.class, args);
     }
+    @Bean
+    public ModelMapper modelMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        PropertyMap propertyMap = new PropertyMap<AddCardRequestDto, Card>() {
+            @Override
+            protected void configure() {
+                skip(destination.getId());
+            }
+        };
+
+        modelMapper.addMappings(propertyMap);
+        return modelMapper;
+    }
 
     @Bean
     public CommandLineRunner importData(
             UserRepository userRepository,
             CollectionRepository collectionRepository,
-            DeckRepository deckRepository
+            DeckRepository deckRepository,
+            CardRepository cardRepository,
+            CollectionLineCardRepository collectionLineCardRepository
     )
     {
         return (args) -> {
@@ -35,11 +49,35 @@ public class MagicBaseBackendApplication {
 
             Collection collection = new Collection();
             collection.setUsers(List.of(bobsen));
+            collection.setDescription("Mit fire collection");
+            collection.setName("FIRE");
+            collection.setType(CollectionType.ALL_CARDS);
             collectionRepository.save(collection);
+
 
             bobsen.setCollections(List.of(collection));
             userRepository.save(bobsen);
 
+            Card card = new Card();
+            card.setApiId("ashogjhadnwnmt");
+            card.setName("Fireball");
+            card.setOracleText("EN STOR FIREBALL");
+            card.setRarity("Rare");
+            card.setTypeLine("Creature");
+            card.setPower(22);
+            card.setToughness(12);
+            card.setConvertedManaCost(2);
+            card.setSetName("SETNAMAE");
+            card.setEuroPrice(2.2);
+            card.setImageUrl("https://cards.scryfall.io/png/front/6/f/6f471133-db82-4610-81fb-736fbd3b1c6c.png?1645740909");
+            cardRepository.save(card);
+
+            CollectionLineCard collectionLineCard = new CollectionLineCard();
+            collectionLineCard.setQuantity(2);
+            collectionLineCard.setCollection(collection);
+            collectionLineCard.setCard(card);
+            //collection
+            collectionLineCardRepository.save(collectionLineCard);
 
             Deck myDeck= new Deck();
             myDeck.setUsers(List.of(bobsen));
@@ -52,10 +90,6 @@ public class MagicBaseBackendApplication {
 
             bobsen.setDecks(List.of(myDeck));
             userRepository.save(bobsen);
-
-
-
-
 
 
         };}
