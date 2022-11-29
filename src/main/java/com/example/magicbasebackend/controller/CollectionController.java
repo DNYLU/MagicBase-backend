@@ -36,8 +36,9 @@ public class CollectionController {
         return new ResponseEntity<>(collectionService.showAllCollection(id), HttpStatus.OK);
     }
 //test delete
-    @DeleteMapping("/{id}")
-    public void deleteCollectionById(@PathVariable("id") Long id){
-        collectionService.deleteById(id);
+    @DeleteMapping("/{id}/user/{userId}")
+    public void deleteCollectionById(@PathVariable("id") Long id,
+                                     @PathVariable("userId") Long userId){
+        collectionService.deleteById(id, userId);
     }
 }

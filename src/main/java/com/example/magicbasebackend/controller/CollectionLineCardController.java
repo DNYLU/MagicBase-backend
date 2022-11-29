@@ -2,6 +2,7 @@ package com.example.magicbasebackend.controller;
 
 
 import com.example.magicbasebackend.dto.AddCardRequestDto;
+import com.example.magicbasebackend.model.CollectionLineCard;
 import com.example.magicbasebackend.services.CollectionLineCardService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +20,11 @@ public class CollectionLineCardController {
     }
 
     @PostMapping()
-    public ResponseEntity<AddCardRequestDto> add(@RequestBody AddCardRequestDto addCardRequest) {
-        collectionLineCardService.addCards(addCardRequest);
+    public ResponseEntity<CollectionLineCard> add(@RequestBody AddCardRequestDto addCardRequest) {
+        CollectionLineCard clc = collectionLineCardService.addCards(addCardRequest);
 
         // skal lige ændres til at returnere det rigtige
-        return new ResponseEntity<>(addCardRequest, HttpStatus.OK);
+        return new ResponseEntity<>(clc, HttpStatus.OK);
 
 
 

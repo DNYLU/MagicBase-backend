@@ -20,7 +20,7 @@ public class Collection {
     @Column(name = "collection_id")
     private Long id;
 
-    @OneToMany(mappedBy = "collection")
+    @OneToMany(mappedBy = "collection", cascade = CascadeType.ALL)
     private List<CollectionLineCard> collectionLineCards;
 
     @Column(name = "collection_type")
@@ -35,4 +35,9 @@ public class Collection {
     @JsonBackReference
     @ManyToMany(mappedBy = "collections")
     private List<User> users;
+
+    public void removeUser(User user) {
+        this.users.remove(user);
+        user.getCollections().remove(this);
+    }
 }

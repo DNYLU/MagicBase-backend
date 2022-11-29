@@ -30,7 +30,7 @@ public class CollectionLineCardService {
         this.collectionRepository = collectionRepository;
     }
 
-    public void addCards(AddCardRequestDto addCardRequest) {
+    public CollectionLineCard addCards(AddCardRequestDto addCardRequest) {
         Card card = cardRepository.findByApiId(addCardRequest.getApiId());
         Collection collection = collectionRepository.findById(addCardRequest.getCollectionId()).get();
         CollectionLineCard collectionLineCard = new CollectionLineCard();
@@ -45,6 +45,6 @@ public class CollectionLineCardService {
         cardRepository.save(card);
 
         collectionRepository.save(collection);
-        collectionLineCardRepository.save(collectionLineCard);
+        return collectionLineCardRepository.save(collectionLineCard);
     }
 }

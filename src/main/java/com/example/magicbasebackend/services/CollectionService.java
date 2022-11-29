@@ -38,7 +38,18 @@ public class CollectionService {
         return collectionRepository.findByUsersId(id);
     }
 
-    public void deleteById(Long id){
-        collectionRepository.deleteById(id);
+    public void deleteById(Long id, Long userId){
+        User user = userService.getUserById(userId);
+        Collection collection = collectionRepository.findById(id).get();
+        collection.removeUser(user);
+
+        if (collection.getUsers().size() == 0) {
+            collectionRepository.deleteById(id);
+        }
+        else {
+            collectionRepository.save(collection);
+        }
+
+
     }
 }

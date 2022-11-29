@@ -46,17 +46,20 @@ public class MagicBaseBackendApplication {
 
             User bobsen = new User("bobsen@gmail", "123123", "bobsen");
             userRepository.save(bobsen);
+            User dude = new User("dude@gmail.com", "123123", "dude");
+            userRepository.save(dude);
 
             Collection collection = new Collection();
-            collection.setUsers(List.of(bobsen));
+            collection.setUsers(List.of(bobsen, dude));
             collection.setDescription("Mit fire collection");
             collection.setName("FIRE");
             collection.setType(CollectionType.ALL_CARDS);
             collectionRepository.save(collection);
 
-
+            dude.setCollections(List.of(collection));
             bobsen.setCollections(List.of(collection));
             userRepository.save(bobsen);
+            userRepository.save(dude);
 
             Card card = new Card();
             card.setApiId("ashogjhadnwnmt");
@@ -90,9 +93,6 @@ public class MagicBaseBackendApplication {
 
             bobsen.setDecks(List.of(myDeck));
             userRepository.save(bobsen);
-
-
-
 
         };}
 

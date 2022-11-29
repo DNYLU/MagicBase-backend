@@ -19,11 +19,6 @@ public class CardController {
         this.cardService = cardService;
     }
 
-    @PostMapping("/collection/{id}")
-    public void addCard(@RequestBody CollectionLineCard collectionLineCard,
-                        @PathVariable("id") Long id) {
-        cardService.add(collectionLineCard);
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Card> getCardById(@PathVariable("id") Long id) {

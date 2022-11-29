@@ -21,13 +21,5 @@ public class CardService {
         return cardRepository.findAll();
     }
 
-    public void add(CollectionLineCard collectionLineCard) {
-        Card card = cardRepository.findByCardApiId(collectionLineCard.getCard().getCardApiId());
-        if (card == null){
-            cardRepository.save(collectionLineCard.getCard());
-        } else if (card != null){
 
-        }
-
-    }
 }
