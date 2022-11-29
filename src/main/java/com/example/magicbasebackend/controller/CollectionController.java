@@ -1,5 +1,6 @@
 package com.example.magicbasebackend.controller;
 
+import com.example.magicbasebackend.dto.AddCollectionRequestDto;
 import com.example.magicbasebackend.model.Collection;
 import com.example.magicbasebackend.services.CollectionService;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,10 @@ public class CollectionController {
     }
 
     @PostMapping()
-    public ResponseEntity<Collection> addCollection(@RequestBody Collection collection) {
-        return new ResponseEntity<>(collectionService.addCollection(collection), HttpStatus.OK);
+    public ResponseEntity<Collection> addCollection(@RequestBody AddCollectionRequestDto addCollectionRequestDto) {
+        System.out.println("Hello");
+        return new ResponseEntity<>(collectionService.addCollection(addCollectionRequestDto), HttpStatus.OK);
+
     }
 
     @GetMapping("/{id}")
