@@ -24,7 +24,7 @@ public class DeckLineCardService {
         this.deckRepository = deckRepository;
     }
 
-    public DeckLineCard addCards(AddCardRequestDto addCardRequest) {
+    public DeckLineCard addDeckCards(AddCardRequestDto addCardRequest) {
         Card card = cardRepository.findByApiId(addCardRequest.getApiId());
         Deck deck = deckRepository.findById(addCardRequest.getDeckId()).get();
         DeckLineCard deckLineCard = new DeckLineCard();

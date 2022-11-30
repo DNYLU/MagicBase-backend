@@ -33,17 +33,10 @@ public class CardController {
         Iterable<Card> cards = cardService.findAllCards();
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
-
+    /*
     @PostMapping(value = "/addcardtodeck")
     public void addCardToDeck(@RequestBody Card card) {
         cardService.add(card);
     }
-
-    @PostMapping()
-    public ResponseEntity<Card> add(@RequestBody AddCardRequestDto addCardRequest) {
-        Card card = DeckLineCardService.addCards(addCardRequest);
-
-        // skal lige ændres til at returnere det rigtige
-        return new ResponseEntity<>(card, HttpStatus.OK);
-    }
+    */
 }
