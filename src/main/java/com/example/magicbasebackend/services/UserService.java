@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -27,7 +28,7 @@ public class UserService {
         collection.setName(user.getUsername() + "'s collection");
         collectionRepository.save(collection);
 
-        user.setCollections(List.of(collection));
+        user.setCollections(Set.of(collection));
 
        return userRepository.save(user);
     }

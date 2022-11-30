@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,7 +25,7 @@ class UserServiceTest {
         userService.saveUser(user);
 
         User newlyCreatedUser = userService.getUserByUsername(user.getUsername()).get();
-        List<Collection> collections = newlyCreatedUser.getCollections();
+        Set<Collection> collections = newlyCreatedUser.getCollections();
 
         assertEquals(1, collections.size());
 

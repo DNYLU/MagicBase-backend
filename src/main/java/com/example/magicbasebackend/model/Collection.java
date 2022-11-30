@@ -8,7 +8,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -35,7 +37,7 @@ public class Collection {
 
     @JsonBackReference
     @ManyToMany(mappedBy = "collections")
-    private List<User> users = new ArrayList<>();
+    private Set<User> users = new HashSet<>();
 
     public void removeUser(User user) {
         this.users.remove(user);

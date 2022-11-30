@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
+import java.util.Set;
 
 @SpringBootApplication
 public class MagicBaseBackendApplication {
@@ -50,14 +51,14 @@ public class MagicBaseBackendApplication {
             userRepository.save(dude);
 
             Collection collection = new Collection();
-            collection.setUsers(List.of(bobsen, dude));
+            collection.setUsers(Set.of(bobsen, dude));
             collection.setDescription("Mit fire collection");
             collection.setName("FIRE");
             collection.setType(CollectionType.ALL_CARDS);
             collectionRepository.save(collection);
 
-            dude.setCollections(List.of(collection));
-            bobsen.setCollections(List.of(collection));
+            dude.setCollections(Set.of(collection));
+            bobsen.setCollections(Set.of(collection));
             userRepository.save(bobsen);
             userRepository.save(dude);
 

@@ -7,7 +7,9 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -39,7 +41,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "collection_id")
     )
-    private List<Collection> collections = new ArrayList<>();
+    private Set<Collection> collections = new HashSet<>();
 
 
     @ManyToMany
