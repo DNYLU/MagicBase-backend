@@ -21,13 +21,10 @@ public class CollectionLineCardController {
 
     @PostMapping()
     public ResponseEntity<CollectionLineCard> add(@RequestBody AddCardRequestDto addCardRequest) {
-        CollectionLineCard clc = collectionLineCardService.addCards(addCardRequest);
+        CollectionLineCard clc = collectionLineCardService.addCollectionCards(addCardRequest);
 
         // skal lige ændres til at returnere det rigtige
         return new ResponseEntity<>(clc, HttpStatus.OK);
-
-
-
     }
 
 }

@@ -38,7 +38,7 @@ public class CollectionService {
         return collectionRepository.findByUsersId(id);
     }
 
-    public void deleteById(Long id, Long userId){
+    public Collection deleteById(Long id, Long userId){
         User user = userService.getUserById(userId);
         Collection collection = collectionRepository.findById(id).get();
         collection.removeUser(user);
@@ -49,7 +49,7 @@ public class CollectionService {
         else {
             collectionRepository.save(collection);
         }
-
+        return collection;
 
     }
 }

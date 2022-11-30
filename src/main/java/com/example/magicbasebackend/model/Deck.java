@@ -40,5 +40,9 @@ public class Deck {
     @JsonBackReference(value = "owner")
     @JoinColumn(name = "owner_id")
     private User owner;
+    public void removeUser(User user){
+        this.users.remove(user);
+        user.getDecks().remove(this);
+    }
 
 }

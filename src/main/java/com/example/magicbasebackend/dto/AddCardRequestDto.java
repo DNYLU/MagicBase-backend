@@ -12,7 +12,6 @@ import lombok.ToString;
 @AllArgsConstructor
 public class AddCardRequestDto {
 
-
     private String apiId;
 
     private String name;
@@ -39,5 +38,6 @@ public class AddCardRequestDto {
 
     private Long collectionId;
 
+    private Long deckId;
 
 }
