@@ -32,7 +32,7 @@ public class CollectionLineCardService {
 
     public CollectionLineCard addCards(AddCardRequestDto addCardRequest) {
         Card card = cardRepository.findByApiId(addCardRequest.getApiId());
-        Collection collection = collectionRepository.findById(addCardRequest.getCollectionId()).get();
+        Collection collection = collectionRepository.findById(addCardRequest.getDeckId()).get();
         CollectionLineCard collectionLineCard = new CollectionLineCard();
         if (card == null) {
             card = modelMapper.map(addCardRequest, Card.class);
@@ -43,7 +43,6 @@ public class CollectionLineCardService {
         collectionLineCard.setQuantity(addCardRequest.getQuantity());
         collectionLineCard.setCard(card);
         cardRepository.save(card);
-
         collectionRepository.save(collection);
         return collectionLineCardRepository.save(collectionLineCard);
     }

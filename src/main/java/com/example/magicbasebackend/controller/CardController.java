@@ -1,8 +1,10 @@
 package com.example.magicbasebackend.controller;
 
+import com.example.magicbasebackend.dto.AddCardRequestDto;
 import com.example.magicbasebackend.model.Card;
 import com.example.magicbasebackend.model.CollectionLineCard;
 import com.example.magicbasebackend.services.CardService;
+import com.example.magicbasebackend.services.DeckLineCardService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,5 +34,16 @@ public class CardController {
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
 
+    @PostMapping(value = "/addcardtodeck")
+    public void addCardToDeck(@RequestBody Card card) {
+        cardService.add(card);
+    }
 
+    @PostMapping()
+    public ResponseEntity<Card> add(@RequestBody AddCardRequestDto addCardRequest) {
+        Card card = DeckLineCardService.addCards(addCardRequest);
+
+        // skal lige ændres til at returnere det rigtige
+        return new ResponseEntity<>(card, HttpStatus.OK);
+    }
 }

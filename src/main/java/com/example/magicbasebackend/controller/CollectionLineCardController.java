@@ -25,9 +25,6 @@ public class CollectionLineCardController {
 
         // skal lige ændres til at returnere det rigtige
         return new ResponseEntity<>(clc, HttpStatus.OK);
-
-
-
     }
 
 }
