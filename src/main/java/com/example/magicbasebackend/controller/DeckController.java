@@ -28,8 +28,10 @@ public class DeckController {
        List<Deck> deckList = deckService.findAllDecksByUserId(id);
         return ResponseEntity.ok().body(deckList);
     }
-    @DeleteMapping("/{id}")
-    public void deleteDeckById(@PathVariable("id") Long id){
-        deckService.deleteById(id);
+    @DeleteMapping("/{id}/user/{userId}")
+    public ResponseEntity<Deck> deleteDeckById(@PathVariable("id") Long id,@PathVariable("userId") Long userId){
+        Deck deck = deckService.getDeckById(id);
+        deckService.deleteById(deck, userId);
+        return new ResponseEntity<>(deck,HttpStatus.OK);
     }
 }
