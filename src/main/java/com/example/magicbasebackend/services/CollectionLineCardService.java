@@ -32,7 +32,7 @@ public class CollectionLineCardService {
 
     public CollectionLineCard addCollectionCards(AddCardRequestDto addCardRequest) {
         Card card = cardRepository.findByApiId(addCardRequest.getApiId());
-        Collection collection = collectionRepository.findById(addCardRequest.getDeckId()).get();
+        Collection collection = collectionRepository.findById(addCardRequest.getContainerId()).get();
         CollectionLineCard collectionLineCard = new CollectionLineCard();
         if (card == null) {
             card = modelMapper.map(addCardRequest, Card.class);

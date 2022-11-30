@@ -35,8 +35,7 @@ class CollectionLineCardServiceTest {
             10.5,
             "sfdsfdfsf",
             4,
-            1L
-    );
+            1L);
 
     private Card card;
 
@@ -55,7 +54,7 @@ class CollectionLineCardServiceTest {
     @Order(2)
     @DisplayName("addCards - card does not exist")
     public void addCards_cardDoesNotExist() {
-        collectionLineCardService.addCards(addCardRequestDto);
+        collectionLineCardService.addCollectionCards(addCardRequestDto);
         allCardsInDatabase = (List<Card>) cardRepository.findAll();
         assertEquals(1, allCardsInDatabase.size(), "The list size should be 1");
     }
@@ -72,7 +71,7 @@ class CollectionLineCardServiceTest {
     @Order(4)
     @DisplayName("addCards - card already exists")
     public void addCards_cardAlreadyExists() {
-        collectionLineCardService.addCards(addCardRequestDto);
+        collectionLineCardService.addCollectionCards(addCardRequestDto);
         allCardsInDatabase = (List<Card>) cardRepository.findAll();
         assertEquals(1, allCardsInDatabase.size(), "The list size should be 1");
 
@@ -83,7 +82,7 @@ class CollectionLineCardServiceTest {
     @DisplayName("addCards - add card with unique apiId")
     public void addCards_addUniqueCard() {
         addCardRequestDto.setApiId("fgfgfg");
-        collectionLineCardService.addCards(addCardRequestDto);
+        collectionLineCardService.addCollectionCards(addCardRequestDto);
         allCardsInDatabase = (List<Card>) cardRepository.findAll();
         assertEquals(2, allCardsInDatabase.size(), "The list size should be 2");
 

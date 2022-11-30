@@ -33,10 +33,4 @@ public class CardController {
         Iterable<Card> cards = cardService.findAllCards();
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
-    /*
-    @PostMapping(value = "/addcardtodeck")
-    public void addCardToDeck(@RequestBody Card card) {
-        cardService.add(card);
-    }
-    */
 }

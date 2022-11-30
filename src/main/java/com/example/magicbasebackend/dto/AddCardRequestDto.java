@@ -36,8 +36,6 @@ public class AddCardRequestDto {
 
     private int quantity;
 
-    private Long collectionId;
-
-    private Long deckId;
+    private Long containerId;
 
 }

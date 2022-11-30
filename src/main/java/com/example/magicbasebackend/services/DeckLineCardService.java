@@ -26,7 +26,7 @@ public class DeckLineCardService {
 
     public DeckLineCard addDeckCards(AddCardRequestDto addCardRequest) {
         Card card = cardRepository.findByApiId(addCardRequest.getApiId());
-        Deck deck = deckRepository.findById(addCardRequest.getDeckId()).get();
+        Deck deck = deckRepository.findById(addCardRequest.getContainerId()).get();
         DeckLineCard deckLineCard = new DeckLineCard();
         if (card == null) {
             card = modelMapper.map(addCardRequest, Card.class);
