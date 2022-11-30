@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -34,10 +35,15 @@ public class Collection {
 
     @JsonBackReference
     @ManyToMany(mappedBy = "collections")
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
     public void removeUser(User user) {
         this.users.remove(user);
         user.getCollections().remove(this);
     }
+    public void addUser(User user) {
+        this.users.add(user);
+        user.getCollections().add(this);
+    }
+
 }

@@ -24,8 +24,8 @@ public class CollectionService {
         collection.setType(addCollectionRequestDto.getType());
         collection.setName(addCollectionRequestDto.getName());
         collection.setDescription(addCollectionRequestDto.getDescription());
-        collection.getUsers().add(user);
-        user.setCollections(List.of(collection));
+        collection.addUser(user);
+
         //userService.save(user);
         return collectionRepository.save(collection);
     }
