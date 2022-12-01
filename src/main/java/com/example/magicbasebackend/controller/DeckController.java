@@ -24,11 +24,17 @@ public class DeckController {
         Deck addedDeck = deckService.add(deckDto);
         return new ResponseEntity<>(addedDeck, HttpStatus.OK);
     }
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     private ResponseEntity<List<Deck>> getDecksByUserId(@PathVariable("userId") Long id){
        List<Deck> deckList = deckService.findAllDecksByUserId(id);
         return ResponseEntity.ok().body(deckList);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Deck> getDeckById(@PathVariable("id") Long id){
+        return new ResponseEntity<>(deckService.getDeckById(id), HttpStatus.OK);
+
+    }
+
     @DeleteMapping("/{id}/user/{userId}")
     public ResponseEntity<Deck> deleteDeckById(@PathVariable("id") Long id,@PathVariable("userId") Long userId){
         Deck deck = deckService.getDeckById(id);
@@ -36,3 +42,5 @@ public class DeckController {
         return new ResponseEntity<>(deck,HttpStatus.OK);
     }
 }
+
+
