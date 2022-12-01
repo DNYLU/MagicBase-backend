@@ -24,7 +24,7 @@ public class DeckController {
         Deck addedDeck = deckService.add(deckDto);
         return new ResponseEntity<>(addedDeck, HttpStatus.OK);
     }
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     private ResponseEntity<List<Deck>> getDecksByUserId(@PathVariable("userId") Long id){
        List<Deck> deckList = deckService.findAllDecksByUserId(id);
         return ResponseEntity.ok().body(deckList);
