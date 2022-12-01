@@ -1,5 +1,6 @@
 package com.example.magicbasebackend.controller;
 
+import com.example.magicbasebackend.dto.AddDeckRequestDto;
 import com.example.magicbasebackend.model.Deck;
 import com.example.magicbasebackend.services.DeckService;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,8 @@ public class DeckController {
     }
 
     @PostMapping
-    public ResponseEntity<Deck> addDeck(@RequestBody Deck deck) {
-        Deck addedDeck = deckService.add(deck);
+    public ResponseEntity<Deck> addDeck(@RequestBody AddDeckRequestDto deckDto) {
+        Deck addedDeck = deckService.add(deckDto);
         return new ResponseEntity<>(addedDeck, HttpStatus.OK);
     }
     @GetMapping("/{userId}")

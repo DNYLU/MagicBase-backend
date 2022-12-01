@@ -1,11 +1,13 @@
 package com.example.magicbasebackend.model;
 
+import com.example.magicbasebackend.enums.DeckFormatType;
 import com.example.magicbasebackend.model.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +22,7 @@ public class Deck {
 
     @ManyToMany(mappedBy = "decks")
     @JsonBackReference(value = "users")
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
 
     @Column(name = "deck_name")
@@ -31,7 +33,7 @@ public class Deck {
 
 
     @Column(name = "deck_format_type")
-    private String formatType;
+    private DeckFormatType formatType;
 
     @Column(name = "deck_public")
     private boolean isPublic;
@@ -43,6 +45,11 @@ public class Deck {
     public void removeUser(User user){
         this.users.remove(user);
         user.getDecks().remove(this);
+    }
+
+    public void addUser(User user){
+        this.users.add(user);
+        user.getDecks().add(this);
     }
 
 }

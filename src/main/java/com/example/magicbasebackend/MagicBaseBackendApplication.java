@@ -2,6 +2,7 @@ package com.example.magicbasebackend;
 
 import com.example.magicbasebackend.dto.AddCardRequestDto;
 import com.example.magicbasebackend.enums.CollectionType;
+import com.example.magicbasebackend.enums.DeckFormatType;
 import com.example.magicbasebackend.model.*;
 import com.example.magicbasebackend.repositories.*;
 import org.modelmapper.ModelMapper;
@@ -87,7 +88,7 @@ public class MagicBaseBackendApplication {
             myDeck.setUsers(List.of(bobsen));
             myDeck.setName("myDeck");
             myDeck.setDescription("what ever");
-            myDeck.setFormatType("idk");
+            myDeck.setFormatType(DeckFormatType.STANDARD);
             myDeck.setPublic(false);
             myDeck.setOwner(bobsen);
             deckRepository.save(myDeck);

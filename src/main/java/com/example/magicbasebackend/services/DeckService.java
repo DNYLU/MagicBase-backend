@@ -1,5 +1,6 @@
 package com.example.magicbasebackend.services;
 
+import com.example.magicbasebackend.dto.AddDeckRequestDto;
 import com.example.magicbasebackend.model.Deck;
 import com.example.magicbasebackend.model.User;
 import com.example.magicbasebackend.repositories.DeckRepository;
@@ -29,7 +30,14 @@ public class DeckService {
       return   deckRepository.findByUsersId(id);
     }
 
-    public Deck add(Deck deck) {
+    public Deck add(AddDeckRequestDto deckDto) {
+        User user = userService.getUserById(deckDto.getUserId());
+        Deck deck = new Deck();
+        deck.setName(deckDto.getName());
+        deck.setOwner(user);
+        deck.setDescription(deckDto.getDescription());
+        deck.setFormatType(deckDto.getFormatType());
+        deck.addUser(user);
         return deckRepository.save(deck);
     }
 
