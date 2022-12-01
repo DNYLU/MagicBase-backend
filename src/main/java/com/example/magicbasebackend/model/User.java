@@ -50,7 +50,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "deck_id")
     )
-    private List<Deck> decks;
+    private Set<Deck> decks;
 
 
     public User(String email, String password, String username) {

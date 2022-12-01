@@ -41,7 +41,8 @@ public class MagicBaseBackendApplication {
             CollectionRepository collectionRepository,
             DeckRepository deckRepository,
             CardRepository cardRepository,
-            CollectionLineCardRepository collectionLineCardRepository
+            CollectionLineCardRepository collectionLineCardRepository,
+            DeckLineCardRepository deckLineCardRepository
     )
     {
         return (args) -> {
@@ -85,7 +86,7 @@ public class MagicBaseBackendApplication {
             collectionLineCardRepository.save(collectionLineCard);
 
             Deck myDeck= new Deck();
-            myDeck.setUsers(List.of(bobsen));
+            myDeck.setUsers(Set.of(bobsen));
             myDeck.setName("myDeck");
             myDeck.setDescription("what ever");
             myDeck.setFormatType(DeckFormatType.STANDARD);
@@ -93,7 +94,13 @@ public class MagicBaseBackendApplication {
             myDeck.setOwner(bobsen);
             deckRepository.save(myDeck);
 
-            bobsen.setDecks(List.of(myDeck));
+            DeckLineCard deckLineCard = new DeckLineCard();
+            deckLineCard.setQuantity(2);
+            deckLineCard.setCard(card);
+            deckLineCard.setDeck(myDeck);
+            deckLineCardRepository.save(deckLineCard);
+
+            bobsen.setDecks(Set.of(myDeck));
             userRepository.save(bobsen);
 
         };}

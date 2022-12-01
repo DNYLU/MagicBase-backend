@@ -1,11 +1,14 @@
 package com.example.magicbasebackend.services;
 
 import com.example.magicbasebackend.dto.AddDeckRequestDto;
+import com.example.magicbasebackend.dto.ShareDeckRequestDto;
 import com.example.magicbasebackend.model.Deck;
+import com.example.magicbasebackend.model.DeckLineCard;
 import com.example.magicbasebackend.model.User;
 import com.example.magicbasebackend.repositories.DeckRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -53,4 +56,27 @@ public class DeckService {
 
     }
 
+    public Deck shareDeck(ShareDeckRequestDto shareDeckRequestDto) {
+        User user = userService.getUserByUsername(shareDeckRequestDto.getUsername()).get();
+        Deck deck = deckRepository.findById(shareDeckRequestDto.getDeckId()).get();
+        Deck deckCopy = new Deck();
+        deckCopy.setName(deck.getName());
+        deckCopy.setDescription(deck.getDescription());
+        deckCopy.setFormatType(deck.getFormatType());
+        deckCopy.addUser(user);
+        deckCopy.setOwner(user);
+        deckCopy = deckRepository.save(deckCopy);
+        List<DeckLineCard> deckLineCards = deck.getDeckLineCards();
+        List<DeckLineCard> deckLineCardsCopy = new ArrayList<>();
+        for (DeckLineCard dlc:deckLineCards) {
+            DeckLineCard deckLineCard = new DeckLineCard();
+            deckLineCard.setQuantity(dlc.getQuantity());
+            deckLineCard.setCard(dlc.getCard());
+            deckLineCard.setDeck(deckCopy);
+            deckLineCardsCopy.add(deckLineCard);
+        }
+        deckCopy.setDeckLineCards(deckLineCardsCopy);
+        deckRepository.save(deckCopy);
+        return deckCopy;
+    }
 }
