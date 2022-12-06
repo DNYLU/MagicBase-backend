@@ -9,19 +9,24 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DeckLineCardService {
 
     private DeckLineCardRepository deckLineCardRepository;
     private CardRepository cardRepository;
     private DeckRepository deckRepository;
-    @Autowired
     private ModelMapper modelMapper;
 
-    public DeckLineCardService(DeckLineCardRepository deckLineCardRepository, CardRepository cardRepository, DeckRepository deckRepository) {
+    public DeckLineCardService(DeckLineCardRepository deckLineCardRepository,
+                               CardRepository cardRepository,
+                               DeckRepository deckRepository,
+                               ModelMapper modelMapper) {
         this.deckLineCardRepository = deckLineCardRepository;
         this.cardRepository = cardRepository;
         this.deckRepository = deckRepository;
+        this.modelMapper = modelMapper;
     }
 
     public DeckLineCard addDeckCards(AddCardRequestDto addCardRequest) {
@@ -31,6 +36,11 @@ public class DeckLineCardService {
         if (card == null) {
             card = modelMapper.map(addCardRequest, Card.class);
         }
+        DeckLineCard dlc = findDeckLineCard(deck.getDeckLineCards(), addCardRequest.getApiId());
+        if(dlc != null) {
+            dlc.setQuantity(dlc.getQuantity() + addCardRequest.getQuantity());
+            return deckLineCardRepository.save(dlc);
+        }
 
         deckLineCard.setDeck(deck);
         deckLineCard.setQuantity(addCardRequest.getQuantity());
@@ -38,5 +48,16 @@ public class DeckLineCardService {
         cardRepository.save(card);
         deckRepository.save(deck);
         return deckLineCardRepository.save(deckLineCard);
+    }
+    public DeckLineCard findDeckLineCard(List<DeckLineCard> deckLineCards, String apiId) {
+        DeckLineCard deckLineCard = null;
+        for(DeckLineCard dlc: deckLineCards) {
+            if (dlc.getCard().getApiId().equals(apiId)) {
+                deckLineCard = dlc;
+            }
+
+        }
+        return deckLineCard;
+
     }
 }
