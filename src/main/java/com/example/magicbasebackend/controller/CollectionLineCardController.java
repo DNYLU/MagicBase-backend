@@ -39,5 +39,10 @@ public class CollectionLineCardController {
         return new ResponseEntity<>(collectionLineCardService.getByCollectionIdPaged(collectionId, pageRequest),
                                     HttpStatus.OK);
     }
+
+    @PatchMapping()
+    public ResponseEntity<CollectionLineCard> update(@RequestBody CollectionLineCard collectionLineCard){
+        return ResponseEntity.ok().body(collectionLineCardService.update(collectionLineCard));
+    }
 }
 

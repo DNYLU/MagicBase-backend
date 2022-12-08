@@ -8,7 +8,6 @@ import com.example.magicbasebackend.repositories.CardRepository;
 import com.example.magicbasebackend.repositories.CollectionLineCardRepository;
 import com.example.magicbasebackend.repositories.CollectionRepository;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -71,4 +70,16 @@ public class CollectionLineCardService {
         return collectionLineCard;
 
     }
+
+    public CollectionLineCard update(CollectionLineCard collectionLineCard){
+        CollectionLineCard oldCLC = collectionLineCardRepository.findById(collectionLineCard.getId()).get();
+        if (collectionLineCard.getQuantity() == 0){
+            collectionLineCardRepository.deleteById(collectionLineCard.getId());
+            return oldCLC;
+        }
+        return collectionLineCardRepository.save(oldCLC.updateFrom(collectionLineCard));
+    }
+
+
+
 }

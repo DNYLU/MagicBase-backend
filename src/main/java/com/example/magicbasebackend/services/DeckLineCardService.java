@@ -2,6 +2,7 @@ package com.example.magicbasebackend.services;
 
 import com.example.magicbasebackend.dto.AddCardRequestDto;
 import com.example.magicbasebackend.model.Card;
+import com.example.magicbasebackend.model.CollectionLineCard;
 import com.example.magicbasebackend.model.Deck;
 import com.example.magicbasebackend.model.DeckLineCard;
 import com.example.magicbasebackend.repositories.*;
@@ -59,5 +60,15 @@ public class DeckLineCardService {
         }
         return deckLineCard;
 
+    }
+
+
+    public DeckLineCard update(DeckLineCard deckLineCard){
+        DeckLineCard oldCLC = deckLineCardRepository.findById(deckLineCard.getId()).get();
+        if (deckLineCard.getQuantity() == 0){
+            deckLineCardRepository.deleteById(deckLineCard.getId());
+            return oldCLC;
+        }
+        return deckLineCardRepository.save(oldCLC.updateFrom(deckLineCard));
     }
 }

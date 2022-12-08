@@ -28,5 +28,10 @@ public class CollectionLineCard {
     @ManyToOne
     private Card card;
 
-
+    public CollectionLineCard updateFrom(CollectionLineCard collectionLineCard){
+        if(this.quantity != collectionLineCard.getQuantity()){
+            this.quantity = collectionLineCard.getQuantity();
+        }
+            return this;
+        }
 }

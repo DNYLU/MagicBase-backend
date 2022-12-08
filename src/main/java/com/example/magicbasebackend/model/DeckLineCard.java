@@ -28,5 +28,11 @@ public class DeckLineCard {
     @ManyToOne
     private Card card;
 
+    public DeckLineCard updateFrom(DeckLineCard deckLineCard){
+        if(this.quantity != deckLineCard.getQuantity()){
+            this.quantity = deckLineCard.getQuantity();
+        }
+        return this;
+    }
 
 }
