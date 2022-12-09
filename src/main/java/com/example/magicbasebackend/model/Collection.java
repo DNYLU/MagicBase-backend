@@ -35,6 +35,14 @@ public class Collection {
     @Column(name = "collection_description")
     private String description;
 
+    @Column(name = "collection_public")
+    private boolean isPublic;
+
+    @ManyToOne
+    @JsonBackReference(value = "owner")
+    @JoinColumn(name = "owner_id")
+    private User owner;
+
     @JsonBackReference
     @ManyToMany(mappedBy = "collections")
     private Set<User> users = new HashSet<>();

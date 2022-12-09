@@ -1,11 +1,13 @@
 package com.example.magicbasebackend.services;
 
 import com.example.magicbasebackend.dto.AddCollectionRequestDto;
-import com.example.magicbasebackend.model.Collection;
-import com.example.magicbasebackend.model.User;
+import com.example.magicbasebackend.dto.ShareCollectionRequestDto;
+import com.example.magicbasebackend.dto.ShareDeckRequestDto;
+import com.example.magicbasebackend.model.*;
 import com.example.magicbasebackend.repositories.CollectionRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,6 +26,7 @@ public class CollectionService {
         collection.setType(addCollectionRequestDto.getType());
         collection.setName(addCollectionRequestDto.getName());
         collection.setDescription(addCollectionRequestDto.getDescription());
+        collection.setOwner(user);
         collection.addUser(user);
 
         //userService.save(user);
@@ -50,6 +53,31 @@ public class CollectionService {
             collectionRepository.save(collection);
         }
         return collection;
+    }
 
+
+    public Collection shareCollection(ShareCollectionRequestDto shareCollectionRequestDto) {
+        User user = userService.getUserByUsername(shareCollectionRequestDto.getUsername()).get();
+        Collection collection = collectionRepository.findById(shareCollectionRequestDto.getCollectionId()).get();
+        Collection collectionCopy = new Collection();
+        collectionCopy.setName(collection.getName());
+        collectionCopy.setDescription(collection.getDescription());
+        collectionCopy.setType(collection.getType());
+        collectionCopy.addUser(user);
+        collectionCopy.setOwner(user);
+        collectionCopy = collectionRepository.save(collectionCopy);
+        List<CollectionLineCard> collectionLineCards = collection.getCollectionLineCards();
+        List<CollectionLineCard> deckLineCardsCopy = new ArrayList<>();
+        for (CollectionLineCard clc:collectionLineCards) {
+            CollectionLineCard collectionLineCard = new CollectionLineCard();
+            collectionLineCard.setQuantity(clc.getQuantity());
+            collectionLineCard.setCard(clc.getCard());
+            collectionLineCard.setCollection(collectionCopy);
+            deckLineCardsCopy.add(collectionLineCard);
+        }
+        collectionCopy.setCollectionLineCards(deckLineCardsCopy);
+        collectionRepository.save(collectionCopy);
+        return collectionCopy;
     }
 }
+

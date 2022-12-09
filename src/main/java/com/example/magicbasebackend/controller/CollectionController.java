@@ -1,7 +1,10 @@
 package com.example.magicbasebackend.controller;
 
 import com.example.magicbasebackend.dto.AddCollectionRequestDto;
+import com.example.magicbasebackend.dto.ShareCollectionRequestDto;
+import com.example.magicbasebackend.dto.ShareDeckRequestDto;
 import com.example.magicbasebackend.model.Collection;
+import com.example.magicbasebackend.model.Deck;
 import com.example.magicbasebackend.services.CollectionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +44,11 @@ public class CollectionController {
                                      @PathVariable("userId") Long userId){
         Collection collection = collectionService.deleteById(id, userId);
         return new ResponseEntity<>(collection,HttpStatus.OK);
+    }
 
+    @PostMapping("/share")
+    public ResponseEntity<Collection> shareDeck(@RequestBody ShareCollectionRequestDto shareCollectionRequestDto){
+        Collection collection = collectionService.shareCollection(shareCollectionRequestDto);
+        return new ResponseEntity<>(collection,HttpStatus.OK);
     }
 }

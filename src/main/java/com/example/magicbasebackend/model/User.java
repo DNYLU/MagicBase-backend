@@ -35,6 +35,9 @@ public class User {
     @OneToMany(mappedBy = "owner")
     private List<Deck> decksOwned;
 
+    @OneToMany(mappedBy = "owner")
+    private List<Collection> collectionsOwned;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_has_collection",
