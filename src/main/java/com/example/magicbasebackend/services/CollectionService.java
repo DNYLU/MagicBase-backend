@@ -2,7 +2,6 @@ package com.example.magicbasebackend.services;
 
 import com.example.magicbasebackend.dto.AddCollectionRequestDto;
 import com.example.magicbasebackend.dto.ShareCollectionRequestDto;
-import com.example.magicbasebackend.dto.ShareDeckRequestDto;
 import com.example.magicbasebackend.model.*;
 import com.example.magicbasebackend.repositories.CollectionRepository;
 import org.springframework.stereotype.Service;
@@ -58,7 +57,7 @@ public class CollectionService {
 
     public Collection shareCollection(ShareCollectionRequestDto shareCollectionRequestDto) {
         User user = userService.getUserByUsername(shareCollectionRequestDto.getUsername()).get();
-        Collection collection = collectionRepository.findById(shareCollectionRequestDto.getCollectionId()).get();
+        Collection collection = collectionRepository.findById(shareCollectionRequestDto.getContainerId()).get();
         Collection collectionCopy = new Collection();
         collectionCopy.setName(collection.getName());
         collectionCopy.setDescription(collection.getDescription());

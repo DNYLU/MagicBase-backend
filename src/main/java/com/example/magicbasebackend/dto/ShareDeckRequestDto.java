@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class ShareDeckRequestDto {
     private String username;
-    private Long deckId;
+    private Long containerId;
 }

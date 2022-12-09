@@ -58,7 +58,7 @@ public class DeckService {
 
     public Deck shareDeck(ShareDeckRequestDto shareDeckRequestDto) {
         User user = userService.getUserByUsername(shareDeckRequestDto.getUsername()).get();
-        Deck deck = deckRepository.findById(shareDeckRequestDto.getDeckId()).get();
+        Deck deck = deckRepository.findById(shareDeckRequestDto.getContainerId()).get();
         Deck deckCopy = new Deck();
         deckCopy.setName(deck.getName());
         deckCopy.setDescription(deck.getDescription());

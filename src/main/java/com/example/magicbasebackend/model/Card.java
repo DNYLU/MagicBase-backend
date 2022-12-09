@@ -57,6 +57,9 @@ public class Card {
     @Column(name = "card_image_url")
     private String imageUrl;
 
+    @Column(name = "card_image_url_transform")
+    private String imageUrlTransform;
+
     @ManyToMany
     @JoinTable(
             name = "card_has_color",

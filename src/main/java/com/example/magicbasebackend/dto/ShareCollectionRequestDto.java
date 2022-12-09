@@ -6,5 +6,5 @@ import lombok.Setter;
 @Getter
 public class ShareCollectionRequestDto {
     private String username;
-    private Long collectionId;
+    private Long containerId;
 }

@@ -34,6 +34,8 @@ public class AddCardRequestDto {
 
     private String imageUrl;
 
+    private String imageUrlTransform;
+
     private int quantity;
 
     private Long containerId;
