@@ -10,6 +10,7 @@ import org.modelmapper.PropertyMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class MagicBaseBackendApplication {
     }
 
     @Bean
+    @ConditionalOnProperty(prefix = "job.autorun", name = "command-line-runner", havingValue = "true", matchIfMissing = true)
     public CommandLineRunner importData(
             UserRepository userRepository,
             CollectionRepository collectionRepository,

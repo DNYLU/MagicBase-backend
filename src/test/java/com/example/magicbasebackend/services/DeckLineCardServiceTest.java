@@ -3,7 +3,6 @@ package com.example.magicbasebackend.services;
 import com.example.magicbasebackend.model.Card;
 import com.example.magicbasebackend.model.Deck;
 import com.example.magicbasebackend.model.DeckLineCard;
-import com.example.magicbasebackend.repositories.DeckLineCardRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

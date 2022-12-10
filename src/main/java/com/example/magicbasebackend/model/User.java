@@ -47,13 +47,13 @@ public class User {
     private Set<Collection> collections = new HashSet<>();
 
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_has_deck",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "deck_id")
     )
-    private Set<Deck> decks;
+    private Set<Deck> decks = new HashSet<>();
 
 
     public User(String email, String password, String username) {

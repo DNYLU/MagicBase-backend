@@ -45,8 +45,9 @@ public class Deck {
     @JoinColumn(name = "owner_id")
     private User owner;
 
-    @OneToMany(mappedBy = "deck", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "deck", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<DeckLineCard> deckLineCards;
+
     public void removeUser(User user){
         this.users.remove(user);
         user.getDecks().remove(this);

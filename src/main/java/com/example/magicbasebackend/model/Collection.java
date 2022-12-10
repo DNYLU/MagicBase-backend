@@ -23,7 +23,7 @@ public class Collection {
     @Column(name = "collection_id")
     private Long id;
 
-    @OneToMany(mappedBy = "collection", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "collection", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CollectionLineCard> collectionLineCards;
 
     @Column(name = "collection_type")
