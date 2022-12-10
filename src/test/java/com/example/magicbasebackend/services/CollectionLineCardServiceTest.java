@@ -34,7 +34,8 @@ class CollectionLineCardServiceTest {
             "set",
             10.5,
             "sfdsfdfsf",
-            4,
+            "1231212",
+            5,
             1L);
 
     private Card card;
