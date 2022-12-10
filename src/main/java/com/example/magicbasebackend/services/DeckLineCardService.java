@@ -71,4 +71,5 @@ public class DeckLineCardService {
         }
         return deckLineCardRepository.save(oldCLC.updateFrom(deckLineCard));
     }
+
 }

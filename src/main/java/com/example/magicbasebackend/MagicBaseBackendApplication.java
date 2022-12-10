@@ -12,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -47,10 +48,16 @@ public class MagicBaseBackendApplication {
     {
         return (args) -> {
 
+            List<User> users = new ArrayList<>();
             User bobsen = new User("bobsen@gmail", "123123", "bobsen");
-            userRepository.save(bobsen);
             User dude = new User("dude@gmail.com", "123123", "dude");
-            userRepository.save(dude);
+            User user = new User("user@gmail.com", "123123", "user");
+            users.add(bobsen);
+            users.add(dude);
+            users.add(user);
+
+            userRepository.saveAll(users);
+
 
             Collection collection = new Collection();
             collection.setUsers(Set.of(bobsen, dude));

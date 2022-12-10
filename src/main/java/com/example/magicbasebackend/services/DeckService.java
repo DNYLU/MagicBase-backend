@@ -76,7 +76,7 @@ public class DeckService {
             deckLineCardsCopy.add(deckLineCard);
         }
         deckCopy.setDeckLineCards(deckLineCardsCopy);
-        deckRepository.save(deckCopy);
-        return deckCopy;
+        return deckRepository.save(deckCopy);
+
     }
 }
