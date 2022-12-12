@@ -79,4 +79,19 @@ public class DeckService {
         deckRepository.save(deckCopy);
         return deckCopy;
     }
+
+    public Deck shiftPublic(Long id) {
+        Deck deck = deckRepository.findById(id).get();
+        if(deck.isHasBeenSetToPublic()){
+            deck.setHasBeenSetToPublic(false);
+        }else{
+            deck.setHasBeenSetToPublic(true);
+        }
+        deckRepository.save(deck);
+        return deck;
+    }
+
+    public List<Deck> getAllPublicDecks() {
+        return deckRepository.findAllByHasBeenSetToPublicIsTrue();
+    }
 }
