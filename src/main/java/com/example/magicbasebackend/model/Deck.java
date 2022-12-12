@@ -1,13 +1,11 @@
 package com.example.magicbasebackend.model;
 
 import com.example.magicbasebackend.enums.DeckFormatType;
-import com.example.magicbasebackend.model.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,7 +36,7 @@ public class Deck {
     private DeckFormatType formatType;
 
     @Column(name = "deck_public")
-    private boolean isPublic;
+    private boolean hasBeenSetToPublic;
 
     @ManyToOne
     @JsonBackReference(value = "owner")

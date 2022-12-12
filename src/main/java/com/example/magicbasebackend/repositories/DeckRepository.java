@@ -9,4 +9,5 @@ import java.util.List;
 public interface DeckRepository extends CrudRepository<Deck, Long> {
 
     List<Deck> findByUsersId(Long userId);
+    List<Deck> findAllByHasBeenSetToPublicIsTrue();
 }

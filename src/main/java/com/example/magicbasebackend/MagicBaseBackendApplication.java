@@ -12,7 +12,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.List;
 import java.util.Set;
 
 @SpringBootApplication
@@ -90,7 +89,7 @@ public class MagicBaseBackendApplication {
             myDeck.setName("myDeck");
             myDeck.setDescription("what ever");
             myDeck.setFormatType(DeckFormatType.STANDARD);
-            myDeck.setPublic(false);
+            myDeck.setHasBeenSetToPublic(false);
             myDeck.setOwner(bobsen);
             deckRepository.save(myDeck);
 
