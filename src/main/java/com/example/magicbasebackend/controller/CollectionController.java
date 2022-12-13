@@ -51,4 +51,5 @@ public class CollectionController {
         Collection collection = collectionService.shareCollection(shareCollectionRequestDto);
         return new ResponseEntity<>(collection,HttpStatus.OK);
     }
+
 }

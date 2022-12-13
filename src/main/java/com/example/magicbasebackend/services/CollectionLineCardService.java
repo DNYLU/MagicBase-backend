@@ -12,7 +12,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CollectionLineCardService {
@@ -53,13 +55,7 @@ public class CollectionLineCardService {
         collectionRepository.save(collection);
         return collectionLineCardRepository.save(collectionLineCard);
     }
-    public Page<CollectionLineCard> getByCollectionIdPaged(Long collectionId, PageRequest pageRequest) {
 
-
-        Page<CollectionLineCard> pagingClc = collectionLineCardRepository.findByCollectionId(collectionId, pageRequest);
-        return pagingClc;
-
-    }
     public CollectionLineCard findCollectionLineCard(List<CollectionLineCard> collectionLineCards, String apiId) {
         CollectionLineCard collectionLineCard = null;
         for(CollectionLineCard clc: collectionLineCards) {
@@ -81,5 +77,22 @@ public class CollectionLineCardService {
     }
 
 
+    public List<CollectionLineCard> search(String searchWord, Long id) {
+        List<CollectionLineCard> allCards = collectionLineCardRepository.findByCollectionId(id);
+        System.out.println(allCards);
+        /*
+        List<CollectionLineCard> sortedCards = new ArrayList<>();
+        for (CollectionLineCard clc:allCards) {
+            if(clc.getCard().getName().toLowerCase().contains(searchWord.toLowerCase())){
+                sortedCards.add(clc);
+            }
+        }
+        */
+        List<CollectionLineCard> sortedCards = allCards.stream().filter(clc -> clc.getCard().getName().toLowerCase().contains(searchWord.toLowerCase()))
+                .collect(Collectors.toList());
 
+
+        System.out.println(sortedCards);
+        return sortedCards;
+    }
 }

@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/clc")
@@ -29,20 +31,14 @@ public class CollectionLineCardController {
         return new ResponseEntity<>(clc, HttpStatus.OK);
     }
 
-    @GetMapping("/collection/{id}")
-        public ResponseEntity<Page<CollectionLineCard>> all(@PathVariable("id") Long collectionId,
-                                                            @RequestParam(defaultValue = "0") int pageNo,
-                                                            @RequestParam(defaultValue = "10") int pageSize) {
-        System.out.println(collectionId);
-        PageRequest pageRequest = PageRequest.of(pageNo, pageSize);
-
-        return new ResponseEntity<>(collectionLineCardService.getByCollectionIdPaged(collectionId, pageRequest),
-                                    HttpStatus.OK);
-    }
 
     @PatchMapping()
     public ResponseEntity<CollectionLineCard> update(@RequestBody CollectionLineCard collectionLineCard){
         return ResponseEntity.ok().body(collectionLineCardService.update(collectionLineCard));
+    }
+    @GetMapping("/search/{collectionId}")
+    public ResponseEntity<List<CollectionLineCard>> search(@RequestParam(name = "search-word") String searchWord, @PathVariable("collectionId") Long id){
+        return new ResponseEntity<>(collectionLineCardService.search(searchWord,id),HttpStatus.OK);
     }
 }
 

@@ -56,6 +56,7 @@ public class DeckController {
     public ResponseEntity<List<Deck>> getAllPublicDecks(){
         return new ResponseEntity<>(deckService.getAllPublicDecks(),HttpStatus.OK);
     }
+
 }
 
 
