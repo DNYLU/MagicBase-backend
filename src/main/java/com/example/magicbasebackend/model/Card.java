@@ -71,19 +71,4 @@ public class Card {
     @JsonBackReference
     @OneToMany(mappedBy = "card")
     private List<CollectionLineCard> collectionLineCards = new ArrayList<>();
-
-    /*public boolean equals(Object o) {
-        Card otherCard = (Card) o;
-        return
-                this.id == otherCard.getId()
-                        && this.name.equals(otherCard.getName())
-                        && this.typeLine.equals(otherCard.typeLine)
-                        && this.rarity.equals(otherCard.rarity)
-                        && this.typeLine == otherCard.getTypeLine()
-                        && this.oracleText.equals(otherCard.getOracleText())
-                        && this.imageUrl.equals(otherCard.getImageUrl())
-                        && this.power == otherCard.getPower()
-                        && this.toughness == otherCard.getToughness()
-                        && this.convertedManaCost == otherCard.getConvertedManaCost();
-    }*/
 }

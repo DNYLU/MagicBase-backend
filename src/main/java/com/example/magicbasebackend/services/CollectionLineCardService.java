@@ -79,20 +79,9 @@ public class CollectionLineCardService {
 
     public List<CollectionLineCard> search(String searchWord, Long id) {
         List<CollectionLineCard> allCards = collectionLineCardRepository.findByCollectionId(id);
-        System.out.println(allCards);
-        /*
-        List<CollectionLineCard> sortedCards = new ArrayList<>();
-        for (CollectionLineCard clc:allCards) {
-            if(clc.getCard().getName().toLowerCase().contains(searchWord.toLowerCase())){
-                sortedCards.add(clc);
-            }
-        }
-        */
         List<CollectionLineCard> sortedCards = allCards.stream().filter(clc -> clc.getCard().getName().toLowerCase().contains(searchWord.toLowerCase()))
                 .collect(Collectors.toList());
 
-
-        System.out.println(sortedCards);
         return sortedCards;
     }
 }

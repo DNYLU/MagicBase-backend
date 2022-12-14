@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CardService {
     private CardRepository cardRepository;
-    private DeckRepository deckRepository;
 
     public CardService(CardRepository cardRepository) {
         this.cardRepository = cardRepository;
