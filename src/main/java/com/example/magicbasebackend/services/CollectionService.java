@@ -28,7 +28,7 @@ public class CollectionService {
         collection.setOwner(user);
         collection.addUser(user);
 
-        //userService.save(user);
+
         return collectionRepository.save(collection);
     }
 

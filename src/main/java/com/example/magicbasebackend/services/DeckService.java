@@ -25,9 +25,6 @@ public class DeckService {
         return deckRepository.findById(id).get();
     }
 
-    public Iterable<Deck> findAllDecks() {
-        return deckRepository.findAll();
-    }
 
     public List<Deck> findAllDecksByUserId( Long id){
       return   deckRepository.findByUsersId(id);

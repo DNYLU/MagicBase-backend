@@ -2,9 +2,7 @@ package com.example.magicbasebackend.controller;
 
 import com.example.magicbasebackend.dto.AddCollectionRequestDto;
 import com.example.magicbasebackend.dto.ShareCollectionRequestDto;
-import com.example.magicbasebackend.dto.ShareDeckRequestDto;
 import com.example.magicbasebackend.model.Collection;
-import com.example.magicbasebackend.model.Deck;
 import com.example.magicbasebackend.services.CollectionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

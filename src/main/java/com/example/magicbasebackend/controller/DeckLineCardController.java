@@ -1,8 +1,6 @@
 package com.example.magicbasebackend.controller;
 
 import com.example.magicbasebackend.dto.AddCardRequestDto;
-import com.example.magicbasebackend.model.Card;
-import com.example.magicbasebackend.model.CollectionLineCard;
 import com.example.magicbasebackend.model.DeckLineCard;
 import com.example.magicbasebackend.services.DeckLineCardService;
 import org.springframework.http.HttpStatus;

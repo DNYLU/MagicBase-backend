@@ -5,10 +5,8 @@ import com.example.magicbasebackend.model.Collection;
 import com.example.magicbasebackend.model.User;
 import com.example.magicbasebackend.repositories.CollectionRepository;
 import com.example.magicbasebackend.repositories.UserRepository;
-
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -33,9 +31,6 @@ public class UserService {
        return userRepository.save(user);
     }
 
-    public User save(User user){
-       return userRepository.save(user);
-    }
     public User getUserById(Long userId) {
         return userRepository.findById(userId).get();
     }

@@ -1,6 +1,5 @@
 package com.example.magicbasebackend.repositories;
 
-import com.example.magicbasebackend.model.Collection;
 import com.example.magicbasebackend.model.Deck;
 import org.springframework.data.repository.CrudRepository;
 
