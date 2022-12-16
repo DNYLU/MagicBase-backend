@@ -2,6 +2,7 @@ package com.example.magicbasebackend.services;
 
 import com.example.magicbasebackend.model.Collection;
 import com.example.magicbasebackend.model.User;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ class UserServiceTest {
 
     @Test
     @DisplayName("Add user - create default collection")
+    @Disabled
     void addDefaultCollection_whenUserCreated() {
         User user = new User("bob@gmail.com", "123", "bob");
         userService.saveUser(user);

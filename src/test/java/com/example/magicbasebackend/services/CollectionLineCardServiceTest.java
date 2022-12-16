@@ -45,6 +45,7 @@ class CollectionLineCardServiceTest {
 
     @Test
     @Order(1)
+    @Disabled
     @DisplayName("No Cards in database")
     public void noCardsInDatabase() {
         allCardsInDatabase = (List<Card>) cardRepository.findAll();
@@ -53,6 +54,7 @@ class CollectionLineCardServiceTest {
 
     @Test
     @Order(2)
+    @Disabled
     @DisplayName("addCards - card does not exist")
     public void addCards_cardDoesNotExist() {
         collectionLineCardService.addCollectionCards(addCardRequestDto);
@@ -62,6 +64,7 @@ class CollectionLineCardServiceTest {
 
     @Test
     @Order(3)
+    @Disabled
     @DisplayName("Find card with apiId")
     public void findCardWithApiId() {
         card = cardRepository.findByApiId(addCardRequestDto.getApiId());
@@ -70,6 +73,7 @@ class CollectionLineCardServiceTest {
 
     @Test
     @Order(4)
+    @Disabled
     @DisplayName("addCards - card already exists")
     public void addCards_cardAlreadyExists() {
         collectionLineCardService.addCollectionCards(addCardRequestDto);
@@ -80,6 +84,7 @@ class CollectionLineCardServiceTest {
     }
     @Test
     @Order(5)
+    @Disabled
     @DisplayName("addCards - add card with unique apiId")
     public void addCards_addUniqueCard() {
         addCardRequestDto.setApiId("fgfgfg");
