@@ -45,7 +45,6 @@ class CollectionLineCardServiceTest {
 
     @Test
     @Order(1)
-    @Disabled
     @DisplayName("No Cards in database")
     public void noCardsInDatabase() {
         allCardsInDatabase = (List<Card>) cardRepository.findAll();

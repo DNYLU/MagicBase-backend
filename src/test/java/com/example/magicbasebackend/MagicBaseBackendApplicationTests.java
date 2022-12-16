@@ -8,20 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 class MagicBaseBackendApplicationTests {
 
-    @Autowired
-    private UserRepository userRepository;
 
     @Test
     void contextLoads() {
-    }
-
-    @Test
-    void test() {
-        User user = userRepository.findByUsername("bobsen").get();
-        System.out.println(user);
-
-
-
     }
 
 }

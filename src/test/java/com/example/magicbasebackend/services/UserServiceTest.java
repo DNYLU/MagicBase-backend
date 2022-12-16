@@ -20,7 +20,7 @@ class UserServiceTest {
 
     @Test
     @DisplayName("Add user - create default collection")
-    @Disabled
+
     void addDefaultCollection_whenUserCreated() {
         User user = new User("bob@gmail.com", "123", "bob");
         userService.saveUser(user);
