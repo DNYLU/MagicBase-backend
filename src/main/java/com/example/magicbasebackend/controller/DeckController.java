@@ -48,7 +48,7 @@ public class DeckController {
         Deck deck = deckService.shareDeck(shareDeckRequestDto);
         return new ResponseEntity<>(deck,HttpStatus.OK);
     }
-    @PutMapping("/shift-public/{id}")
+    @PatchMapping("/shift-public/{id}")
     public ResponseEntity<Deck> shiftPublic(@PathVariable("id") Long id){
         return new ResponseEntity<>(deckService.shiftPublic(id),HttpStatus.OK);
     }
@@ -56,6 +56,7 @@ public class DeckController {
     public ResponseEntity<List<Deck>> getAllPublicDecks(){
         return new ResponseEntity<>(deckService.getAllPublicDecks(),HttpStatus.OK);
     }
+
 }
 
 

@@ -6,7 +6,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
+import java.util.List;
+
 public interface CollectionLineCardRepository extends PagingAndSortingRepository<CollectionLineCard, Long> {
-    Page<CollectionLineCard> findByCollectionId(Long collectionId, Pageable pageable);
+    List<CollectionLineCard> findByCollectionId(Long collectionId);
+
 
 }

@@ -21,8 +21,6 @@ public class DeckLineCardController {
     @PostMapping()
     public ResponseEntity<DeckLineCard> add(@RequestBody AddCardRequestDto addCardRequest) {
         DeckLineCard dlc = deckLineCardService.addDeckCards(addCardRequest);
-
-        // dlc giver null retur pt.
         return new ResponseEntity<>(dlc, HttpStatus.OK);
     }
 

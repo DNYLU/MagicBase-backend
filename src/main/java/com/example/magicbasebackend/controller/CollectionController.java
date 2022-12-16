@@ -22,9 +22,7 @@ public class CollectionController {
 
     @PostMapping()
     public ResponseEntity<Collection> addCollection(@RequestBody AddCollectionRequestDto addCollectionRequestDto) {
-        System.out.println("Hello");
         return new ResponseEntity<>(collectionService.addCollection(addCollectionRequestDto), HttpStatus.OK);
-
     }
 
     @GetMapping("/{id}")
@@ -36,10 +34,9 @@ public class CollectionController {
     public ResponseEntity<List<Collection>> showAllCollection(@PathVariable("userId")Long id) {
         return new ResponseEntity<>(collectionService.showAllCollection(id), HttpStatus.OK);
     }
-//test delete
+
     @DeleteMapping("/{id}/user/{userId}")
-    public ResponseEntity<Collection> deleteCollectionById(@PathVariable("id") Long id,
-                                     @PathVariable("userId") Long userId){
+    public ResponseEntity<Collection> deleteCollectionById(@PathVariable("id") Long id, @PathVariable("userId") Long userId){
         Collection collection = collectionService.deleteById(id, userId);
         return new ResponseEntity<>(collection,HttpStatus.OK);
     }
@@ -49,4 +46,5 @@ public class CollectionController {
         Collection collection = collectionService.shareCollection(shareCollectionRequestDto);
         return new ResponseEntity<>(collection,HttpStatus.OK);
     }
+
 }
